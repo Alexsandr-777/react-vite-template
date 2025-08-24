@@ -1,12 +1,56 @@
 # React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# новая папка будет создана и наполнена файлами из шаблона
+npx degit <твой-логин>/react-vite-template my-new-app
 
-Currently, two official plugins are available:
+cd my-new-app
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+npm i
 
-## Expanding the ESLint configuration
+npm run dev
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Коротко: после использования шаблона ничего вручную “ставить” не нужно — кроме обычного npm i. Все плагины/библиотеки, которые перечислены в package.json шаблона, установятся автоматически.
+
+Как правильно использовать шаблон
+=================================
+npx degit <твой-логин>/react-vite-template my-new-app
+
+cd my-new-app
+
+npm i            # установит vite, плагины, eslint, prettier и т.д. из package.json
+
+npm run dev
+=================================
+Когда что-то ставить отдельно?
+
+Только если:
+
+ты хочешь новый инструмент, которого нет в шаблоне (например, react-router-dom, tailwindcss, vitest, и т.п.);
+
+ты видишь ошибку вида Module not found: ... — значит плагина нет в package.json (тогда установить npm i -D <plugin> и при необходимости прописать в vite.config.js);
+
+в шаблоне есть husky/lint-staged и не настроен автотреггер — тогда один раз: npx husky install.
+
+Про редактор
+
+Локальные npm-плагины ставятся командой npm i, а вот расширения VS Code — отдельно (один раз на машине):
+
+Prettier – Code formatter
+
+ESLint
+(если в шаблоне есть .vscode/extensions.json, VS Code сам предложит установить)
+
+Пара полезных проверок
+
+Убедиться, что плагин действительно в зависимостях:
+
+npm ls vite-plugin-svgr   # пример
+
+
+Если хочешь свежие минорные версии, а шаблон копирует package-lock.json, можно удалить локфайл перед установкой:
+
+rm -f package-lock.json
+npm i
+
+
+Итого: склонировал шаблон → npm i → готово. Остальное — только по необходимости под конкретный проект.
