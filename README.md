@@ -1,7 +1,7 @@
 # React + Vite
 
 # новая папка будет создана и наполнена файлами из шаблона
-npx degit <твой-логин>/react-vite-template my-new-app
+npx degit Alexsandr-777/react-vite-template my-new-app
 
 cd my-new-app
 
